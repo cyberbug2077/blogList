@@ -20,7 +20,7 @@ describe('total likes', () => {
   })
 })
 
-describe('faverite', () => {
+describe('favorite', () => {
   test('find the top faverite blog of the list with 6 blogs', () => {
     const result = listHelper.favoriteBlog(blogLists.listWithSixBlogs)
     expect(result).toEqual({
