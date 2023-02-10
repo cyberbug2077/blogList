@@ -1,5 +1,5 @@
 const listHelper = require('../utils/list_helper')
-const blogLists = require('./blogListForTest')
+const helper = require('./test_helper')
 
 test('dummy returns one', () => {
   const blogs = []
@@ -10,23 +10,19 @@ test('dummy returns one', () => {
 
 describe('total likes', () => {
   test('when list has only one blog, equals the likes of that', () => {
-    const result = listHelper.totalLikes(blogLists.listWithOneBlog)
-    expect(result).toBe(5)
+    const result = listHelper.totalLikes(helper.listWithOneBlog)
+    expect(result).toBe(helper.listWithOneBlog[0].likes)
   })
 
   test('calculate the total likes of the list with 6 blogs', () => {
-    const result = listHelper.totalLikes(blogLists.listWithSixBlogs)
-    expect(result).toBe(36)
+    const result = listHelper.totalLikes(helper.listWithSixBlogs)
+    expect(result).toBe(helper.perpertyOfBlogs.totalLikes)
   })
 })
 
 describe('favorite', () => {
   test('find the top faverite blog of the list with 6 blogs', () => {
-    const result = listHelper.favoriteBlog(blogLists.listWithSixBlogs)
-    expect(result).toEqual({
-      title: "Canonical string reduction",
-      author: "Edsger W. Dijkstra",
-      likes: 12
-    })
+    const result = listHelper.favoriteBlog(helper.listWithSixBlogs)
+    expect(result).toEqual(helper.perpertyOfBlogs.mostFavorite)
   })
 })

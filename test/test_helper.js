@@ -1,3 +1,5 @@
+const Blog = require('../models/blog')
+
 const emptyList = []
 
 const listWithOneBlog = [
@@ -62,8 +64,21 @@ const listWithSixBlogs = [
   }
 ]
 
+const perpertyOfBlogs = {
+    totalLikes: 36,
+    mostFavorite: {
+      title: "Canonical string reduction",
+      author: "Edsger W. Dijkstra",
+      likes: 12
+    }
+}
+
+const initialBlogs = listWithSixBlogs 
+
 module.exports = {
   emptyList,
   listWithOneBlog,
   listWithSixBlogs,
+  perpertyOfBlogs,
+  initialBlogs
 }
