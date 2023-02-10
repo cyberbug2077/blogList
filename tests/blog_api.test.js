@@ -7,14 +7,12 @@ const Blog = require('../models/blog')
 const api = supertest(app)
 
 beforeEach(async () => {
-  console.log('initializing');
   await Blog.deleteMany({})
   const promiseArray = helper.initialBlogs.map(blog => {
     const blogObject = new Blog(blog)
     return blogObject.save()
   })
   await Promise.all(promiseArray)
-  console.log('ready to test');
 }, 100000)
 
 describe('Ex 4.8: test GET', () => {
@@ -36,6 +34,17 @@ describe('Ex 4.9', () => {
     const response = await api.get('/api/blogs')
     const blog = response.body[0]
     expect(blog.id).toBeDefined()
+  })
+})
+
+describe('Ex 4.10', () => {
+  test('POST make increase blogs number by one', async () => {
+    const response1 = await api.get('/api/blogs')
+    const beforePost = response1.body.length
+    await api.post('/api/blogs', helper.listWithOneBlog[0])
+    const response2 = await api.get('/api/blogs')
+    const afterPost = response2.body.length
+    expect(afterPost-beforePost).toBe(1)
   })
 })
 
