@@ -1,3 +1,4 @@
+const emptyList = []
 
 const listWithOneBlog = [
   {
@@ -62,6 +63,7 @@ const listWithSixBlogs = [
 ]
 
 module.exports = {
+  emptyList,
   listWithOneBlog,
-  listWithSixBlogs
+  listWithSixBlogs,
 }
