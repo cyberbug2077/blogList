@@ -7,6 +7,7 @@ const config = require('./utils/config')
 const blogsRouter = require('./controllers/blogs')
 const usersRouter = require('./controllers/users')
 const logger = require('./utils/logger')
+const middleHandler = require('./utils/middleware')
 
 const app = express()
 
@@ -21,5 +22,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/api/users', usersRouter)
 app.use('/api/blogs', blogsRouter)
+app.use(middleHandler.errorHandler)
 
 module.exports = app
